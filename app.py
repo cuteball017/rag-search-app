@@ -38,7 +38,7 @@ qa_chain = RetrievalQA.from_chain_type(
 def reset_inputs():
     for key in ["lost_item", "brand", "lost_date", "lost_place", "lost_color", "features"]:
         if key in st.session_state:
-            st.session_state[key] = ""
+             del st.session_state[key]
 
 # 페이지 설정
 st.set_page_config(page_title="RAG 落とし物検索", page_icon="🔍")
@@ -52,9 +52,9 @@ st.text_input("📍 紛失場所", key="lost_place")
 st.text_input("🎨 色", key="lost_color")
 st.text_area("🧷 特徴（詳細）", key="features")
 
-# 🔄 リセット 버튼 (위에)
-if st.button("🔄 リセット"):
-    reset_inputs()
+# 🔄 리셋 버튼
+if st.button("🔄 リセット", on_click=reset_inputs):
+    st.rerun()  # 👉 리셋 후 페이지 전체 리렌더링
 
 # 🔎 検索する 버튼 (아래에)
 if st.button("🔎 検索する"):
