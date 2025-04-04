@@ -39,7 +39,8 @@ def reset_inputs():
     for key in ["lost_item", "brand", "lost_date", "lost_place", "lost_color", "features"]:
         if key in st.session_state:
              del st.session_state[key]
-
+    st.rerun() 
+    
 # 페이지 설정
 st.set_page_config(page_title="RAG 落とし物検索", page_icon="🔍")
 st.title("🔍 落とし物 RAG 検索インターフェース")
@@ -52,11 +53,9 @@ st.text_input("📍 紛失場所", key="lost_place")
 st.text_input("🎨 色", key="lost_color")
 st.text_area("🧷 特徴（詳細）", key="features")
 
-# 🔄 リセット 버튼
+# 🔄 リセット 버튼 (위에)
 if st.button("🔄 リセット"):
     reset_inputs()
-    st.experimental_rerun()
-
 
 # 🔎 検索する 버튼 (아래에)
 if st.button("🔎 検索する"):
