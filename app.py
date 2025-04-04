@@ -52,9 +52,11 @@ st.text_input("📍 紛失場所", key="lost_place")
 st.text_input("🎨 色", key="lost_color")
 st.text_area("🧷 特徴（詳細）", key="features")
 
-# 🔄 리셋 버튼
-if st.button("🔄 リセット", on_click=reset_inputs):
-    st.rerun()  # 👉 리셋 후 페이지 전체 리렌더링
+# 🔄 リセット 버튼
+if st.button("🔄 リセット"):
+    reset_inputs()
+    st.experimental_rerun()
+
 
 # 🔎 検索する 버튼 (아래에)
 if st.button("🔎 検索する"):
